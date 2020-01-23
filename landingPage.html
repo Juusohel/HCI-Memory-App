@@ -5,15 +5,43 @@
 <title>Memory Test</title>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
+
 <script>
+//hardcoded to [1,2] values
+var selectedElements = [1,2]
 $(document).ready(function(){
+    $("button.answer-quiz").hide();
+    $("button.mark-quiz").hide();
+
     // Start Quiz Frame
     $("button.start-quiz").click(function(){
         $("div.frame").empty();
+        //hardcoded to [1,2] values
         $("div.frame").append("1,2");
-        $("button.start-quiz").text("Next Quiz").addClass("next-quiz").removeClass("start-quiz");
+        $("button.start-quiz").hide();
+        $("button.answer-quiz").show();
+    });
+
+    // Update Quiz Frame
+    $("button.answer-quiz").click(function(){
+        $("div.frame").empty().append('<form><input type="text" id="input"></form>');
+        $("button.answer-quiz").hide();
+        $("button.mark-quiz").show();
+    });
+
+    // Update Quiz Frame
+    $("button.mark-quiz").click(function(){
+        var input = $('input[type="text"]#input').val();
+        var result = markQuiz(selectedElements, input);
+        $("div.frame").empty().append(result);
+        $("button.mark-quiz").hide();
+        $("button.start-quiz").show();
     });
 });
+
+function markQuiz(selectedElements, returnedElements){
+    return selectedElements == returnedElements;
+}
 </script>
 <style>
     body{
@@ -44,6 +72,8 @@ $(document).ready(function(){
     </div>
     <div class="footer">
         <button type="button" class="start-quiz">Start Quiz</button>
+        <button type="button" class="answer-quiz">Answer Quiz</button>
+        <button type="button" class="mark-quiz">Mark Quiz</button>
     </div>
 </body>
 </html>                                		                            
