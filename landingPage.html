@@ -4,18 +4,44 @@
 <meta charset="utf-8">
 <title>Memory Test</title>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-</head>
 
+<script>
+$(document).ready(function(){
+    // Start Quiz Frame
+    $("button.next-quiz").click(function(){
+        
+    });
+});
+</script>
+<style>
+    body{
+        text-align: center;
+    }
+    .footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 100px;
+        width: 100%;
+        overflow: hidden;
+    }
+    .frame{
+        border: 2px solid black;
+        margin: 2%;
+        height: 600px;
+    }
+</style>
+</head>
 <body>
     <h1>Cognition Test</h1>
     <hr>
-    <div>
+    <div class="frame">
         <p>
             Start Quiz to see how many letters you can recall. 
         </p>
     </div>
-    <div">
-        <button type="button">Start Quiz</button>
+    <div class="footer">
+        <button type="button" class="next-quiz">Start Quiz</button>
     </div>
 </body>
 </html>                                		                            
