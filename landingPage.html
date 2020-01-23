@@ -8,8 +8,10 @@
 <script>
 $(document).ready(function(){
     // Start Quiz Frame
-    $("button.next-quiz").click(function(){
-        
+    $("button.start-quiz").click(function(){
+        $("div.frame").empty();
+        $("div.frame").append("1,2");
+        $("button.start-quiz").text("Next Quiz").addClass("next-quiz").removeClass("start-quiz");
     });
 });
 </script>
@@ -41,7 +43,7 @@ $(document).ready(function(){
         </p>
     </div>
     <div class="footer">
-        <button type="button" class="next-quiz">Start Quiz</button>
+        <button type="button" class="start-quiz">Start Quiz</button>
     </div>
 </body>
 </html>                                		                            
