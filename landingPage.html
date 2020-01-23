@@ -5,7 +5,6 @@
 <title>Memory Test</title>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
-
 <script>
 //hardcoded to [1,2] values
 var selectedElements = [1,2]
@@ -17,6 +16,11 @@ $(document).ready(function(){
     $("button.start-quiz").click(function(){
         $("div.frame").empty();
         //hardcoded to [1,2] values
+        /*
+         * 1b. change the appended values to be the results from random number function to selectedElements var
+         * 2. change the random numbers to be images
+         * 
+         */
         $("div.frame").append("1,2");
         $("button.start-quiz").hide();
         $("button.answer-quiz").show();
@@ -29,6 +33,9 @@ $(document).ready(function(){
         $("button.mark-quiz").show();
     });
 
+    /*
+     * 1c. update results page to give appropriate output
+     */
     // Update Quiz Frame
     $("button.mark-quiz").click(function(){
         var input = $('input[type="text"]#input').val();
@@ -39,11 +46,18 @@ $(document).ready(function(){
     });
 });
 
+/*
+ * 1a. add random number function
+ */
+
 function markQuiz(selectedElements, returnedElements){
     return selectedElements == returnedElements;
 }
 </script>
 <style>
+    /*
+     * 3. update style so it's layed out well and looks nice
+     */
     body{
         text-align: center;
     }
