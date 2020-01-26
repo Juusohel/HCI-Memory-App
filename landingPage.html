@@ -10,6 +10,8 @@
 var maxInt = 100
 //varibe that will store the answer/index if image
 var selectedElements = [];
+//varible used to know how many elements to be displayed
+var cycle = 2
 
 $(document).ready(function(){
     $("button.answer-quiz").hide();
@@ -22,10 +24,17 @@ $(document).ready(function(){
          * 2. change the random numbers to be images 	
          */
 		selectedElements = []
-		for(var i = 0; i<2; i++){
+		for(var i = 0; i<cycle; i++){
 			var num = Math.floor(Math.random() * maxInt);
 			selectedElements.push(num);
-		}
+        }
+
+        if (cycle == 12) {
+            cycle = 2;
+        } else {
+            cycle += 2;
+        }
+
 		$("div.frame").append(selectedElements + ",");
         $("button.start-quiz").hide();
         $("button.answer-quiz").show();
