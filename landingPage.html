@@ -35,16 +35,13 @@ $(document).ready(function(){
             cycle += 2;
         }
 
-		$("div.frame").append(selectedElements + ",");
+        $("div.frame").append(selectedElements + ",");
         $("button.start-quiz").hide();
-        $("button.answer-quiz").show();
-    });
 
-    // Update Quiz Frame
-    $("button.answer-quiz").click(function(){
-        $("div.frame").empty().append('<form><input type="text" id="input"></form>');
-        $("button.answer-quiz").hide();
-        $("button.mark-quiz").show();
+        setTimeout(function(){
+            $("div.frame").empty().append('<form><input type="text" id="input"></form>');
+            $("button.mark-quiz").show();
+        }, 5000);
     });
 
     /*
@@ -96,7 +93,6 @@ $(document).ready(function(){
     </div>
     <div class="footer">
         <button type="button" class="start-quiz">Start Quiz</button>
-        <button type="button" class="answer-quiz">Answer Quiz</button>
         <button type="button" class="mark-quiz">Mark Quiz</button>
     </div>
 </body>
