@@ -45,27 +45,16 @@ $(document).ready(function(){
     // Update Quiz Frame
     $("button.mark-quiz").click(function(){
         var input = $('input[type="text"]#input').val();
-        var output = markQuiz(selectedElements, input);
-        $("div.frame").empty().append(output);
+        inputArr = input.split(",")
+        var missedValues = "You elements you missed was: " + selectedElements.filter(x => !input.includes(x)) + "\n"
+        var correctValues = "The correct values you entered was: " + selectedElements.filter(x => input.includes(x)) + "\n"
+        var wrongValues = "The wrong values you entered was: " + inputArr.filter(x => !correctValues.includes(x))
+
+        $("div.frame").empty().append(missedValues).append(correctValues).append(wrongValues);
         $("button.mark-quiz").hide();
         $("button.start-quiz").show();
     });
 });
-
-function markQuiz(a1, a2) {
-  var result = [];
-  for (var i = 0; i < a1.length; i++) {		//symmetric difference(a1,a2)
-    if (a2.indexOf(a1[i]) === -1) {
-      result.push(a1[i]);
-    }
-  }
-  for (i = 0; i < a2.length; i++) {
-    if (a1.indexOf(a2[i]) === -1) {
-      result.push(a2[i]);
-    }
-  }
-  return result;
-}
 </script>
 <style>
     /*
