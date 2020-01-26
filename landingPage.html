@@ -39,7 +39,7 @@ $(document).ready(function(){
         $("button.start-quiz").hide();
 
         setTimeout(function(){
-            $("div.frame").empty().append('<form><input type="text" id="input"></form>');
+            $("div.frame").empty().append('<form><input type="text" id="input" style="width:70%; height:200%; font-size:200%; text-align:center; background-color:lightyellow;" ></form>');
             $("button.mark-quiz").show();
         }, 5000);
     });
@@ -66,8 +66,14 @@ $(document).ready(function(){
      * 3. update style so it's layed out well and looks nice
      */
     body{
-        text-align: center;
+        text-align:center;
+		background-color:blanchedalmond;
+		font-size:250%;
+		
     }
+	h1{
+		font-size:150%;
+	}
     .footer {
         position: absolute;
         left: 0;
@@ -75,11 +81,19 @@ $(document).ready(function(){
         height: 100px;
         width: 100%;
         overflow: hidden;
+		text-align:center;
     }
+	button{
+		width:50%; 
+		height:50%; 
+		font-size:50%; 
+		background-color:white;
+	}
     .frame{
         border: 2px solid black;
         margin: 2%;
         height: 600px;
+		text-align:center;
     }
 </style>
 </head>
@@ -88,12 +102,12 @@ $(document).ready(function(){
     <hr>
     <div class="frame">
         <p>
-            Start Quiz to see how many letters you can recall. 
+            Start Quiz to see how many numbers you can recall. 
         </p>
     </div>
     <div class="footer">
-        <button type="button" class="start-quiz">Start Quiz</button>
-        <button type="button" class="mark-quiz">Mark Quiz</button>
+        <button type="button" class="start-quiz" >Start Quiz</button>
+        <button type="button" class="mark-quiz" >Mark Quiz</button>
     </div>
 </body>
 </html>
