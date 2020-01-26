@@ -6,8 +6,11 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <script>
-//hardcoded to [1,2] values
-var selectedElements = [1,2]
+//set of numbers that can be selected
+var numbers = [1,2,3,4,5,6,7,8,9]
+//varibe that will store the answer/index if image
+var selectedElements = [];
+
 $(document).ready(function(){
     $("button.answer-quiz").hide();
     $("button.mark-quiz").hide();
@@ -15,13 +18,16 @@ $(document).ready(function(){
     // Start Quiz Frame
     $("button.start-quiz").click(function(){
         $("div.frame").empty();
-        //hardcoded to [1,2] values
         /*
-         * 1b. change the appended values to be the results from random number function to selectedElements var
-         * 2. change the random numbers to be images
-         * 
+         * 2. change the random numbers to be images 	
          */
-        $("div.frame").append("1,2");
+		 
+		selectedElements = []
+		for(var i = 0; i<2; i++){
+			var num = Math.floor(Math.random() * numbers.length);
+			selectedElements.push(num);
+		}
+		$("div.frame").append(selectedElements + ",");
         $("button.start-quiz").hide();
         $("button.answer-quiz").show();
     });
@@ -39,19 +45,26 @@ $(document).ready(function(){
     // Update Quiz Frame
     $("button.mark-quiz").click(function(){
         var input = $('input[type="text"]#input').val();
-        var result = markQuiz(selectedElements, input);
-        $("div.frame").empty().append(result);
+        var output = markQuiz(selectedElements, input);
+        $("div.frame").empty().append(output);
         $("button.mark-quiz").hide();
         $("button.start-quiz").show();
     });
 });
 
-/*
- * 1a. add random number function
- */
-
-function markQuiz(selectedElements, returnedElements){
-    return selectedElements == returnedElements;
+function markQuiz(a1, a2) {
+  var result = [];
+  for (var i = 0; i < a1.length; i++) {		//symmetric difference(a1,a2)
+    if (a2.indexOf(a1[i]) === -1) {
+      result.push(a1[i]);
+    }
+  }
+  for (i = 0; i < a2.length; i++) {
+    if (a1.indexOf(a2[i]) === -1) {
+      result.push(a2[i]);
+    }
+  }
+  return result;
 }
 </script>
 <style>
@@ -90,4 +103,4 @@ function markQuiz(selectedElements, returnedElements){
         <button type="button" class="mark-quiz">Mark Quiz</button>
     </div>
 </body>
-</html>                                		                            
+</html>
