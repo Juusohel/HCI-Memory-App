@@ -6,8 +6,8 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <script>
-//set of numbers that can be selected
-var numbers = [1,2,3,4,5,6,7,8,9]
+//set the highest number that can be selected
+var maxInt = 100
 //varibe that will store the answer/index if image
 var selectedElements = [];
 
@@ -21,10 +21,9 @@ $(document).ready(function(){
         /*
          * 2. change the random numbers to be images 	
          */
-		 
 		selectedElements = []
 		for(var i = 0; i<2; i++){
-			var num = Math.floor(Math.random() * numbers.length);
+			var num = Math.floor(Math.random() * maxInt);
 			selectedElements.push(num);
 		}
 		$("div.frame").append(selectedElements + ",");
