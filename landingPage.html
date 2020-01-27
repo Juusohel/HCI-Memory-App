@@ -7,11 +7,13 @@
 
 <script>
 //set the highest number that can be selected
-var maxInt = 100
+var maxInt = 100;
 //varibe that will store the answer/index if image
 var selectedElements = [];
 //varible used to know how many elements to be displayed
-var cycle = 2
+var cycle = 2;
+
+var score = 0;
 
 $(document).ready(function(){
     $("button.answer-quiz").hide();
@@ -21,7 +23,7 @@ $(document).ready(function(){
     $("button.start-quiz").click(function(){
         $("div.frame").empty();
         /*
-         * 2. change the random numbers to be images 	
+         * 2. change the random numbers to be images
          */
 		selectedElements = []
 		for(var i = 0; i<cycle; i++){
@@ -51,11 +53,31 @@ $(document).ready(function(){
     $("button.mark-quiz").click(function(){
         var input = $('input[type="text"]#input').val();
         inputArr = input.split(",")
-        var missedValues = "You elements you missed was: " + selectedElements.filter(x => !input.includes(x)) + "\n"
-        var correctValues = "The correct values you entered was: " + selectedElements.filter(x => input.includes(x)) + "\n"
-        var wrongValues = "The wrong values you entered was: " + inputArr.filter(x => !correctValues.includes(x))
+        var missedValues = selectedElements.filter(x => !input.includes(x))
+        var correctValues = selectedElements.filter(x => input.includes(x)) + "\n"
+        var wrongValues = inputArr.filter(x => !correctValues.includes(x))
 
-        $("div.frame").empty().append(missedValues).append(correctValues).append(wrongValues);
+        if(Array.isArray(missedValues) && missedValues.length === 0) {
+            $("div.frame").empty().append("You didn't miss any elements!").append('<br />').append('<br />');
+        } else {
+            $("div.frame").empty().append("You elements you missed were: ").append(missedValues).append('<br />').append('<br />');
+        }
+
+        if(Array.isArray(correctValues) && correctValues.length === 0) {
+            $("div.frame").append("You didn't enter any correct values!").append('<br />').append('<br />');
+        } else {
+            $("div.frame").append("The correct values you entered were: ").append(correctValues).append('<br />').append('<br />');
+        }
+
+        if(Array.isArray(wrongValues) && wrongValues.length === 0) {
+            $("div.frame").append("You didn't enter any wrong values!").append('<br />').append('<br />');
+        } else {
+            $("div.frame").append("The wrong values you entered were: ").append(wrongValues).append('<br />');
+        }
+
+        score += correctValues.length;
+        $("div.frame").append("Your current score is: ").append(score);
+
         $("button.mark-quiz").hide();
         $("button.start-quiz").show();
     });
@@ -109,7 +131,7 @@ $(document).ready(function(){
     <hr>
     <div class="frame">
         <p>
-            Start Quiz to see how many numbers you can recall. 
+            Start Quiz to see how many numbers you can recall.
         </p>
     </div>
     <div class="footer">
